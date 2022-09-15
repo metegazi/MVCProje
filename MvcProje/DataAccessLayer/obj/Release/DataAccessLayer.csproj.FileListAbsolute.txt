@@ -1,0 +1,17 @@
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\bin\Release\DataAccessLayer.dll.config
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\bin\Release\DataAccessLayer.dll
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\bin\Release\DataAccessLayer.pdb
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\bin\Release\EntityFramework.dll
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\bin\Release\EntityLayer.dll
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\bin\Release\EntityLayer.pdb
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\bin\Release\EntityLayer.dll.config
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\bin\Release\EntityFramework.xml
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\obj\Release\DataAccessLayer.csprojAssemblyReference.cache
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CopyComplete
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\obj\Release\DataAccessLayer.dll
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\obj\Release\DataAccessLayer.pdb
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\obj\Release\DataAccessLayer.Migrations.mig_adminstatus.resources
+C:\Users\ASUS\source\repos\MvcProje\DataAccessLayer\obj\Release\DataAccessLayer.csproj.GenerateResource.cache

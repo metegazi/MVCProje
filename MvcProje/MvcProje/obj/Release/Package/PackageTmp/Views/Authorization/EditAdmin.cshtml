@@ -1,0 +1,33 @@
+﻿@model EntityLayer.Concrate.Admin
+@{
+    ViewBag.Title = "EditAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Admin Güncelleme Sayfası</h2>
+@using (Html.BeginForm("EditAdmin", "Authorization", FormMethod.Post))
+{
+<div class="form-group">
+
+    @Html.HiddenFor(x => x.id, new { @class = "form-control" })
+    <br />
+    @Html.Label("Admin Kullanıcı Adı")
+    @Html.TextBoxFor(x => x.AdminUserName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AdminUserName)
+    <br />
+    @Html.Label("Şifre")
+    @*@Html.TextBox("AdminPassword",null, new {placeholder=@Model.AdminPassword, @class = "form-control" })*@
+    @Html.ValidationMessageFor(x => x.AdminPassword)
+    <input type="text" class="form-control" id="AdminPassword" name="AdminPassword" placeholder=@Model.AdminPassword>
+    
+    @*onclick="javascript:this.value=' ' "*@
+    <br />
+    @Html.Label("Rol")
+    @Html.DropDownListFor(x => x.AdminRole, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.AdminRole)*@
+    <br />
+
+    <button class="btn btn-success">Güncelle</button>
+</div>
+}
+

@@ -22,5 +22,7 @@ namespace EntityLayer.Concrate
         public string Subject{ get; set; }      //konu
 
         public string Message{ get; set; }
+
+        public DateTime ContactDate { get; set; }
     }
 }

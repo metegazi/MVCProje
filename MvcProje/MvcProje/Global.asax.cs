@@ -12,6 +12,9 @@ namespace MvcProje
     {
         protected void Application_Start()
         {
+            
+            GlobalFilters.Filters.Add(new AuthorizeAttribute()); //Authorize'i kullanabilmek için proje seviyesine çýkardýk.
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
