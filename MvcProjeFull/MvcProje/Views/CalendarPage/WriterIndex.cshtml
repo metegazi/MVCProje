@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "WriterIndex";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<title>Başlık Takvimim</title>
+@*<link href="~/ContentCalendar/bootstrap.min.css" rel="stylesheet" />*@
+@*<link href="~/ContentCalendar/fullcalendar.min.css" rel="stylesheet" />*@
+<link href="~/Content/fullcalendar.css" rel="stylesheet" />
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/moment.min.js"></script>
+
+
+
+<script src="~/Scripts/moment-with-locales.min.js"></script>
+
+<script src="~/Scripts/fullcalendar/locale/tr.js"></script>
+<script src="~/Scripts/fullcalendar/locale-all.js"></script>
+<script src="~/Scripts/bootbox/bootbox.min.js"></script>
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<div class="container">
+    <div id="calendar"></div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        GetCalendarEvents();
+    });
+
+    function GetCalendarEvents() {
+        debugger;
+        $('#calendar').fullCalendar({
+            //lang: 'tr',
+            locale: "tr",
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            editable: true,
+            dayMaxEvents: true,
+            events: '/CalendarPage/GetAllCalendarEvents/',
+            eventClick: function (event) {
+
+                swal(event.title,"Yazar Adı :" + event.description);
+
+                //alert(event.id);
+                //alert(
+                //    'Item ID: ' + event.id +
+                //    "\nItem Title: " + event.title +
+                //    "\n Açıklama: " + event.description
+
+
+                //);
+            }
+        });
+    }
+
+</script>
+

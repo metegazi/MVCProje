@@ -1,0 +1,25 @@
+﻿@model EntityLayer.Concrate.SkillProfile
+@{
+    ViewBag.Title = "EditSkill";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yetenek Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("EditSkill", "SkillProfile", FormMethod.Post))
+{
+    <div class="form-group">
+
+        @Html.HiddenFor(x => x.SkillID, new { @class = "form-control" })
+        @Html.Label("Yetenek")
+        @Html.TextBoxFor(x => x.SkillName, new { @class = "form-control" })
+        @*@Html.DropDownListFor(x => x.SkillName, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })*@
+        <br />
+        @Html.Label("Ne kadar biliyorsunuz (0-100)")
+        @Html.TextBoxFor(x => x.SkillValue, new { @class = "form-control" })
+
+        <br />
+        @*@ViewBag.id*@
+        <button class="btn btn-success">Güncelle</button>
+    </div>
+}

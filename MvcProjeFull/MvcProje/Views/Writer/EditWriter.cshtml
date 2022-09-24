@@ -1,0 +1,107 @@
+﻿@model EntityLayer.Concrate.Writer
+@{
+    ViewBag.Title = "EditWriter";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<br />
+<h2>Yazar Düzenleme Sayfası</h2>
+<div id="dosyaform" style="display:block;">
+    @using (Html.BeginForm("EditWriter", "Writer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-group">
+            @Html.Label("Yazar ID")
+            @Html.TextBoxFor(x => x.WriterID, new { @class = "form-control" })
+            <br />
+            @Html.Label("Yazar Adı")
+            @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.WriterName)
+            <br />
+            @Html.Label("Yazar Soyadı")
+            @Html.TextBoxFor(x => x.WriterSurname, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.WriterSurname)
+            <br />
+            @Html.Label("Yazar Mail")
+            @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.WriterMail)
+            <br />
+            @Html.Label("Yazar Şifresi")
+            @Html.TextBoxFor(x => x.WriterPassword, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.WriterPassword)
+            <br />
+            @Html.Label("Yazar Görsel Linki")
+            <input type="file" name="WriterImage" class="form-control" placeholder="" required="">
+            <br />
+            @Html.Label("Yazar Ünvan")
+            @Html.TextBoxFor(x => x.WriterTitle, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.WriterTitle)
+            <br />
+            @Html.Label("Yazar Hakkında")
+            @Html.TextBoxFor(x => x.WriterAbout, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.WriterAbout)
+            <br /><br />
+            <button class="btn btn-success">Değişiklikleri Uygula</button>
+        </div>
+    }
+</div>
+<div id="linkform" style="display:none;">
+    @using (Html.BeginForm("EditWriter", "Writer", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.Label("Yazar ID")
+            @Html.TextBoxFor(x => x.WriterID, new { @class = "form-control" })
+            <br />
+            @Html.Label("Yazar Adı")
+            @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.WriterName)
+            <br />
+            @Html.Label("Yazar Soyadı")
+            @Html.TextBoxFor(x => x.WriterSurname, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.WriterSurname)
+            <br />
+            @Html.Label("Yazar Mail")
+            @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.WriterMail)
+            <br />
+            @Html.Label("Yazar Şifresi")
+            @Html.TextBoxFor(x => x.WriterPassword, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.WriterPassword)
+            <br />
+            @Html.Label("Yazar Görsel Linki")
+            @Html.TextBoxFor(x => x.WriterImage, new { @class = "form-control" })
+            <br />
+            @Html.Label("Yazar Ünvan")
+            @Html.TextBoxFor(x => x.WriterTitle, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.WriterTitle)
+            <br />
+            @Html.Label("Yazar Hakkında")
+            @Html.TextBoxFor(x => x.WriterAbout, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.WriterAbout)
+            <br /><br />
+            <button class="btn btn-success">Değişiklikleri Uygula</button>
+        </div>
+    }
+</div>
+<button id="p1" class="btn btn-outline-secondary" onclick="div_acip_kapama1()">Görseli link olarak verin</button>
+
+<script language="javascript">
+
+    var durum = 0, div = document.getElementById("div_acip_kapama1");
+    function div_acip_kapama1() {
+        if (durum == 0) {
+            document.getElementById("linkform").style.display = "block";
+            document.getElementById("dosyaform").style.display = "none";
+
+            durum = 1;
+            document.getElementById("p1").innerHTML = "Görseli kendiniz yükleyin";
+        } else {
+            document.getElementById("linkform").style.display = "none";
+            document.getElementById("dosyaform").style.display = "block";
+            durum = 0;
+            document.getElementById("p1").innerHTML = "Görseli link olarak verin";
+
+        }
+    }
+
+</script>

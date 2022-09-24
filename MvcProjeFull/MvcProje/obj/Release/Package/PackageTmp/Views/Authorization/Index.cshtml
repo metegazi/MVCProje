@@ -1,0 +1,75 @@
+﻿@using EntityLayer.Concrate
+@model List<Admin>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{string color1, color2 = "";
+    string durumText = "";
+    string durumText2 = "";
+}
+<br />
+
+@*<div class="small">*@
+<div style="overflow-x:auto;">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Kullanıcı Mail</th>
+                <th>Yetki</th>
+                <th>Durumu</th>
+                <th>Ayarla</th>
+                <th>Güncelle</th>
+
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            if (item.AdminStatus == true)
+            {
+                durumText = "Pasif Yap";
+
+                color1 = "btn btn-danger btn-sm";
+                color2 = "badge badge-success";
+            }
+            else
+            {
+                durumText = "Aktif Yap";
+
+                color1 = "btn btn-success btn-sm";
+                color2 = "badge badge-danger";
+
+            }
+
+            <tr>
+                <th>@item.id</th>
+                <td>@item.AdminUserName</td>
+                <td>@item.AdminRole</td>
+                <td>
+                    <div class="@color2">
+                        @if (item.AdminStatus != true)
+                        {
+                            durumText2 = "Pasif";
+                        }
+                        else
+                        {
+                            durumText2 = "Aktif";
+                        }
+                        @durumText2
+                    </div>
+                </td>
+                <td><a href="/Authorization/DeleteAdmin/@item.id" class="@color1">@durumText</a></td>
+                <td><a href="/Authorization/EditAdmin/@item.id" class="btn btn-warning">Yetkisini Değiştir</a></td>
+
+            </tr>
+
+
+        }
+    </table>
+
+</div>
+<a href="/Authorization/AddAdmin/" class="btn btn-info">Yeni Admin Tanımla</a>
+
+

@@ -1,0 +1,23 @@
+﻿@model EntityLayer.Concrate.SkillProfile
+
+@{
+    ViewBag.Title = "AddSkill";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yetenek Ekleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("AddSkill", "SkillProfile", FormMethod.Post))
+{
+    <div class="form-group">
+        @*@Html.Label("Admin Kullanıcı Adı")*@
+        @Html.TextBoxFor(x => x.SkillName, new { placeholder = "Yetenek Adı", @class = "form-control" })
+    
+        <br />
+        @*@Html.Label("Şifreyi Giriniz")*@
+        @Html.TextBoxFor(x => x.SkillValue, new { placeholder = "Ne kadar biliyorsunuz(0-100)", @class = "form-control" })
+        
+        <br />
+        <button class="btn btn-info">Kaydet</button>
+    </div>
+}

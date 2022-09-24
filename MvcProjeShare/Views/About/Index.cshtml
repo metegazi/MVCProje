@@ -1,0 +1,64 @@
+﻿@using EntityLayer.Concrate
+@model List<About>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{string color3 = "";
+    string durumText = "";
+}
+<h2>Hakkımda Veri Listesi</h2>
+<br />
+<div class="card-body p-0" style="overflow-x:auto;">
+    <table class="table table-striped projects">
+        <tr>
+            <th>#</th>
+            <th>Başlık</th>
+            <th>Detaylar</th>
+            <th>Resim1</th>
+            <th>Resim2</th>
+            <th>Durumu</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            if (item.AboutStatus == true)
+            {
+                durumText = "Pasif Yap";
+                //color2 = "badge badge-success";
+                color3 = "btn btn-danger btn-sm";
+            }
+            else
+            {
+                durumText = "Aktif Yap";
+                //color2 = "badge badge-danger";
+                color3 = "btn btn-success btn-sm";
+
+            }
+            <tr>
+                <th>@item.AboutID</th>
+                <td>@item.AboutDetails1</td>
+                <td>@item.AboutDetails2</td>
+                <td>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <img alt="Avatar" class="table-avatar" src="@item.AboutImage1">
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <img alt="Avatar" class="table-avatar" src="@item.AboutImage2">
+                        </li>
+                    </ul>
+                </td>
+                <td><a href="/About/AboutDelete/@item.AboutID" class="@color3">@durumText</a></td>
+
+            </tr>
+
+
+        }
+    </table>
+</div>
+@Html.Action("AboutPartial", "About")
+

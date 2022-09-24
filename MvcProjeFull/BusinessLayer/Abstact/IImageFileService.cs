@@ -1,0 +1,16 @@
+﻿using EntityLayer.Concrate;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BusinessLayer.Abstact
+{
+    public interface IImageFileService
+    {
+        List<ImageFile> GetList();
+        void ImageAdd(ImageFile image);
+        void ImageUpdate(ImageFile image);
+    }
+}

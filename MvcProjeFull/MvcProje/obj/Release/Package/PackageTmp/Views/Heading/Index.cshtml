@@ -1,0 +1,177 @@
+﻿@using EntityLayer.Concrate
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Heading>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{string color1, color2, color3 = "";
+    string durumText = "";
+}
+<!DOCTYPE html>
+<html>
+
+<body class="hold-transition sidebar-mini">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Başlık İşlemleri</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0" style="overflow-x:auto;">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 20%">
+                                Başlık Adı
+                            </th>
+                            <th style="width: 15%">
+                                Oluşturan Yazar
+                            </th>
+                            <th style="width: 10%">
+                                Durum
+                            </th>
+                            <th style="width: 8%" class="text-center">
+                                Kategori
+                            </th>
+                            <th style="width: 25%">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (item.Category.CategoryName == "Tiyatro")
+                            {
+                                color1 = "badge badge-warning";
+                            }
+                            else if (item.Category.CategoryName == "Spor")
+                            {
+                                color1 = "badge badge-success";
+                            }
+                            else if (item.Category.CategoryName == "Yazılım")
+                            {
+                                color1 = "badge badge-info";
+                            }
+                            else if (item.Category.CategoryName == "Seyahat")
+                            {
+                                color1 = "badge badge-warning";
+                            }
+                            else if (item.Category.CategoryName == "Film")
+                            {
+                                color1 = "badge badge-light";
+                            }
+                            else if (item.Category.CategoryName == "Oyun")
+                            {
+                                color1 = "badge badge-dark";
+                            }
+                            else
+                            {
+                                color1 = "badge badge-secondary";
+                            }
+                            if (item.HeadingStatus == true)
+                            {
+                                durumText = "Pasif Yap";
+                                color2 = "badge badge-success";
+                                color3 = "btn btn-danger btn-sm";
+                            }
+                            else
+                            {
+                                durumText = "Aktif Yap";
+                                color2 = "badge badge-danger";
+                                color3 = "btn btn-success btn-sm";
+
+                            }
+
+                            <tr>
+                                <td>
+                                    @item.WriterID
+                                </td>
+                                <td>
+                                    <a>
+                                        @item.HeadingName
+                                    </a>
+                                    <br />
+                                    <small>
+                                        @(((DateTime)item.HeadingDate).ToString("dd-MMM-yyyy"))
+                                    </small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <img alt="Avatar" class="table-avatar" src="@item.Writer.WriterImage">
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="@color2"> @item.HeadingStatus</div>
+
+                                </td>
+                                <td class="project-state">
+                                    <span class="@color1">@item.Category.CategoryName</span>
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-primary btn-sm" href="/Content/ContentByHeading/@item.HeadingID">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        Yazılar
+                                    </a>
+                                    <a class="btn btn-info btn-sm" href="/Heading/EditHeading/@item.HeadingID">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Düzenle
+                                    </a>
+
+                                    <a class="@color3" href="/Heading/DeleteHeading/@item.HeadingID">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        @durumText
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+</body>
+</html>
+<a href="/Heading/AddHeading/" class="btn btn-primary">Yeni Başlık Girişi</a>
+<br />
+<br />
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+{
+    LiElementClasses = new List<string>
+    { "page-link"}
+})
+<!--Burada sayfalar arası geçişi sağladık.P değişkeni HeadingController/Index daki ile aynı
+    olmak zorunda.
+    PagedListRenderOptions methodu ile bozulan css'leri otomatik düzelttik.
+-->
